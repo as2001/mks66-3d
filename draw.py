@@ -7,6 +7,26 @@ from matrix import *
   # height and depth dimensions.
   # ====================
 def add_box( points, x, y, z, width, height, depth ):
+    add_edge(points,x,y,z,x+width,y,z)
+    x += width
+    add_edge(points,x,y,z,x,y,z+depth)
+    z += depth
+    add_edge(points,x,y,z,x-width,y,z)
+    x -= width
+    add_edge(points,x,y,z,x,y,z-depth)
+    z -= depth
+    add_edge(points,x,y,z,x,y-height,z)
+    y -= height
+    add_edge(points,x,y,z,x+width,y,z)
+    x += width
+    add_edge(points,x,y,z,x,y+height,z)
+    add_edge(points,x,y,z,x,y,z+depth)
+    z += depth
+    add_edge(points,x,y,z,x,y+height,z)
+    add_edge(points,x,y,z,x-width,y,z)
+    x -= width
+    add_edge(points,x,y,z,x,y+height,z)
+    add_edge(points,x,y,z,x,y,z-depth)
     pass
 
   # ====================
@@ -16,6 +36,13 @@ def add_box( points, x, y, z, width, height, depth ):
   # Returns a matrix of those points
   # ====================
 def generate_sphere( points, cx, cy, cz, r, step ):
+##    i = 0
+##    ret = []
+##    while i < 1:
+##        add_edge(points,\
+                 
+        
+        
     pass
 
   # ====================
@@ -63,7 +90,7 @@ def add_circle( points, cx, cy, cz, r, step ):
         y0 = y1
         t+= step
 
-def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
+def add_curve( points, x0, y0, x1, y1, x2z, y2, x3, y3, step, curve_type ):
 
     xcoefs = generate_curve_coefs(x0, x1, x2, x3, curve_type)[0]
     ycoefs = generate_curve_coefs(y0, y1, y2, y3, curve_type)[0]

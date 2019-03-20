@@ -1,4 +1,7 @@
 #test box mesh
+circle
+250 250 0 100 1
+display
 box
 0 0 0 200 100 400
 ident
